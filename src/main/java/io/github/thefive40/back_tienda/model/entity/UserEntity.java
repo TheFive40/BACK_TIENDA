@@ -28,6 +28,9 @@ public class UserEntity {
 
     private String phone;
 
+    @Lob
+    private byte[] image;
+
     public UserEntity ( String email, String password, String name, String phone ) {
         this.email = email;
         this.password = password;

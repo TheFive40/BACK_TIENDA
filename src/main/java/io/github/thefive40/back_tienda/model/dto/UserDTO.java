@@ -1,5 +1,4 @@
 package io.github.thefive40.back_tienda.model.dto;
-
 import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -25,7 +24,6 @@ public class UserDTO implements Cloneable, Serializable {
 
     private String phone;
 
-    @Lob
     private byte[] image;
 
     public UserDTO ( String email, String password ) {
