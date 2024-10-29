@@ -1,9 +1,7 @@
 package io.github.thefive40.back_tienda.model.dto;
-import jakarta.persistence.Lob;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.stereotype.Component;
-
 import java.io.Serializable;
 
 @Component
@@ -23,9 +21,9 @@ public class UserDTO implements Cloneable, Serializable {
     private String lastName;
 
     private String phone;
-
-    private byte[] image;
-
+    private String url;
+    private String secretKey;
+    private String initVector;
     public UserDTO ( String email, String password ) {
         this.email = email;
         this.password = password;

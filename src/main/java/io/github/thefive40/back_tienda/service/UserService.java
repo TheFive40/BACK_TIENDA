@@ -21,20 +21,22 @@ public class UserService {
     }
 
     public UserDTO findByEmail ( String email ) {
-        UserEntity entity = userRepository.findByEmail ( email ).orElseThrow ();
-        return new UserDTO ( entity.getEmail (), entity.getPassword (), entity.getName (),
-                entity.getLastname (), entity.getPhone ( ), entity.getImage () );
+        UserEntity entity = userRepository.findByEmail ( email ).orElse ( null );
+        if (entity == null) return null;
+        return new UserDTO ( entity.getEmail ( ), entity.getPassword ( ), entity.getName ( ),
+                entity.getLastname ( ), entity.getPhone ( ), entity.getUrl ( ), entity.getSecret_key (), entity.getInitVector () );
     }
 
     public void saveUser ( UserDTO user ) {
         userRepository.save ( new UserEntity ( user.getEmail ( ), user.getPassword ( )
-                , user.getName ( ), user.getLastName ( ), user.getPhone ( ) ) );
+                , user.getName ( ), user.getLastName ( ), user.getPhone ( ), user.getUrl ( ), user.getSecretKey ( ),
+                user.getInitVector ()) );
     }
 
     public UserDTO findPasswordByEmail ( String email ) {
-        UserEntity userEntity = userRepository.findByEmail ( email ).orElseThrow ();
-        UserDTO userDTO = new UserDTO (  );
-        userDTO.setPassword (  userEntity.getPassword () );
+        UserEntity userEntity = userRepository.findByEmail ( email ).orElseThrow ( );
+        UserDTO userDTO = new UserDTO ( );
+        userDTO.setPassword ( userEntity.getPassword ( ) );
         return userDTO;
     }
 }
