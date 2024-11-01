@@ -1,6 +1,6 @@
 package io.github.thefive40.back_tienda.service;
 
-import io.github.thefive40.back_tienda.model.dto.UserDTO;
+import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.Base64;
 @Setter
 public class EncryptDataService {
 
-    public void encrypt ( UserDTO user ) {
+    public void encrypt ( ClientDTO user ) {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance ( "AES" );
             keyGen.init ( 128 );

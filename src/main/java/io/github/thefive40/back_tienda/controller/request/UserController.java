@@ -1,6 +1,6 @@
 package io.github.thefive40.back_tienda.controller.request;
 
-import io.github.thefive40.back_tienda.model.dto.UserDTO;
+import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import io.github.thefive40.back_tienda.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +17,14 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public UserDTO getUserByEmail ( @PathVariable String email ) {
+    public ClientDTO getUserByEmail ( @PathVariable String email ) {
         // Retrieve user from database and map it to UserDTO
         // Return the UserDTO
         return userService.findByEmail ( email );
     }
 
     @GetMapping("/password/{email}")
-    public UserDTO getPasswordByEmail ( @PathVariable String email ) {
+    public ClientDTO getPasswordByEmail ( @PathVariable String email ) {
         return userService.findPasswordByEmail(email);
     }
 }

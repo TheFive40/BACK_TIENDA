@@ -1,6 +1,6 @@
 package io.github.thefive40.back_tienda.controller.auth;
 
-import io.github.thefive40.back_tienda.model.dto.UserDTO;
+import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import io.github.thefive40.back_tienda.service.EncryptDataService;
 import io.github.thefive40.back_tienda.service.UserService;
 import org.slf4j.Logger;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Base64;
 
 @RestController
 @RequestMapping("/auth")
@@ -27,13 +25,13 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginPost ( @RequestBody UserDTO userDTO ) {
+    public ResponseEntity<String> loginPost ( @RequestBody ClientDTO clientDTO ) {
         try {
-            var user = userService.findByEmail ( userDTO.getEmail ( ) );
+            var user = userService.findByEmail ( clientDTO.getEmail ( ) );
             if (user == null) return new ResponseEntity<> ( "Login failed", HttpStatus.NOT_FOUND );
             var text = encryptDataService.decrypt ( user.getPassword ( ), user.getSecretKey ( )
                     , user.getInitVector ( ) );
-            if (userDTO.getPassword ( ).equals ( text )) {
+            if (clientDTO.getPassword ( ).equals ( text )) {
                 logger.info ( "¡Login successful!" );
                 return ResponseEntity.ok ( "¡Login successful!" );
             } else {
@@ -51,12 +49,12 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp ( @RequestBody UserDTO userDTO ) {
-        if (userService.findByEmail ( userDTO.getEmail ( ) ) != null) {
+    public ResponseEntity<String> signUp ( @RequestBody ClientDTO clientDTO ) {
+        if (userService.findByEmail ( clientDTO.getEmail ( ) ) != null) {
             return ResponseEntity.badRequest ( ).body ( "Email already registered" );
         }
-        encryptDataService.encrypt ( userDTO );
-        userService.saveUser ( userDTO );
+        encryptDataService.encrypt ( clientDTO );
+        userService.saveUser ( clientDTO );
         return ResponseEntity.ok ( "User created successfully" );
     }
 }
