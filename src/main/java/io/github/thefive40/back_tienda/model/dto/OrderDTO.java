@@ -7,10 +7,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class OrderDTO {
-    private Long idOrder;
+    private long idOrder;
     private double total;
     private Date orderDate;
     private String address;

@@ -7,10 +7,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 public class ProductDTO {
-    private Long productId;
+    private long productId;
 
     private String name;
 

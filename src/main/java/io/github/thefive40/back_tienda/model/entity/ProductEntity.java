@@ -1,9 +1,9 @@
 package io.github.thefive40.back_tienda.model.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,13 +11,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "Productos")
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long productId;
+    private long productId;
 
     private String name;
 
@@ -41,12 +41,4 @@ public class ProductEntity {
     private List<DetailOrderEntity> detailsOrder = new ArrayList<> ( );
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCartEntity> itemsCart = new ArrayList<>();
-    public ProductEntity ( Long productId, String name, String description, double price, String img ) {
-        this.productId = productId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.img = img;
-        this.dateRegistration = new Date ( );
-    }
 }

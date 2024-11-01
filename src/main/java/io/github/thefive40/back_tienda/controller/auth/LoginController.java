@@ -29,7 +29,7 @@ public class LoginController {
         try {
             var user = userService.findByEmail ( clientDTO.getEmail ( ) );
             if (user == null) return new ResponseEntity<> ( "Login failed", HttpStatus.NOT_FOUND );
-            var text = encryptDataService.decrypt ( user.getPassword ( ), user.getSecretKey ( )
+            var text = encryptDataService.decrypt ( user.getPassword ( ), user.getSecret_key ( )
                     , user.getInitVector ( ) );
             if (clientDTO.getPassword ( ).equals ( text )) {
                 logger.info ( "¡Login successful!" );

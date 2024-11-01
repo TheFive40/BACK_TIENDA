@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class DetailOrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDetail;
+    private long idDetail;
 
     @ManyToOne
     @JoinColumn(name = "idOrder_fk")

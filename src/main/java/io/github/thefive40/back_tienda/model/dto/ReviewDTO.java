@@ -1,11 +1,16 @@
 package io.github.thefive40.back_tienda.model.dto;
 
-import io.github.thefive40.back_tienda.model.entity.ClientEntity;
-import io.github.thefive40.back_tienda.model.entity.ProductEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class ReviewDTO {
-    private Long idReview;
-    private ProductEntity product;
-    private ClientEntity idClient;
+    private long idReview;
+    private ProductDTO product;
+    private ClientDTO idClient;
 
 }

@@ -11,14 +11,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "Pedidos")
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    private Long idOrder;
+    private long idOrder;
     private double total;
     private Date orderDate;
     private String address;

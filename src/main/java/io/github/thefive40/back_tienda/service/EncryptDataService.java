@@ -32,7 +32,7 @@ public class EncryptDataService {
             cipher.init ( Cipher.ENCRYPT_MODE, secretKey, ivSpec );
             byte[] encryptedPassword = cipher.doFinal ( user.getPassword ( ).getBytes ( ) );
             user.setPassword ( Base64.getEncoder ( ).encodeToString ( encryptedPassword ) );
-            user.setSecretKey ( Base64.getEncoder ( ).encodeToString ( secretKey.getEncoded ( ) ) );
+            user.setSecret_key ( Base64.getEncoder ( ).encodeToString ( secretKey.getEncoded ( ) ) );
             user.setInitVector ( Base64.getEncoder ( ).encodeToString ( iv ) );
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException |
                  BadPaddingException | InvalidAlgorithmParameterException e) {

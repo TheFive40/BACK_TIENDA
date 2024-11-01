@@ -11,17 +11,16 @@ import java.util.Date;
 import java.util.List;
 
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Table(name = "Cliente")
 @Entity
+@Getter
+@Setter
 public class ClientEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Long idClient;
+    private long idClient;
 
     private String email;
 
@@ -48,16 +47,6 @@ public class ClientEntity {
     private List<ReviewEntity> reviews = new ArrayList<> ();
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingCartEntity> shoppingCart = new ArrayList<> ();
-    public ClientEntity ( String email, String password, String name, String lastname, String phone, String url, String secret_key, String initVector ) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.url = url;
-        this.secret_key = secret_key;
-        this.initVector = initVector;
-        this.registrationDate = new Date (  );
-    }
+
 
 }

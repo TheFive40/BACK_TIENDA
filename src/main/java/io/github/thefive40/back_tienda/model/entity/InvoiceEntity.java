@@ -1,15 +1,19 @@
 package io.github.thefive40.back_tienda.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "Factura")
+@Getter
+@Setter
 public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idInvoice;
+    private long idInvoice;
 
     private int nroInvoice;
     @ManyToOne
