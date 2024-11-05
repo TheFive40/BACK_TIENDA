@@ -7,6 +7,8 @@ import io.github.thefive40.back_tienda.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -36,6 +38,10 @@ public class UserService {
         return client;
     }
 
+    public List<ClientDTO> findAll () {
+        return mapper.toDtoList ( userRepository.findAll ( ) );
+    }
+
     public void saveUser ( ClientDTO user ) {
         ClientEntity client = new ClientEntity ( );
         client.setEmail ( user.getEmail ( ) );
@@ -44,8 +50,8 @@ public class UserService {
         client.setLastname ( user.getLastname ( ) );
         client.setPhone ( user.getPhone ( ) );
         client.setUrl ( user.getUrl ( ) );
-        client.setSecret_key ( user.getSecret_key () );
-        client.setInitVector ( user.getInitVector () );
+        client.setSecret_key ( user.getSecret_key ( ) );
+        client.setInitVector ( user.getInitVector ( ) );
         userRepository.save ( client );
     }
 
