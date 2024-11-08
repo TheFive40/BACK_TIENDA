@@ -31,7 +31,7 @@ public class LoginController {
             if (user == null) return new ResponseEntity<> ( "Login failed", HttpStatus.NOT_FOUND );
             var text = encryptDataService.decrypt ( user.getPassword ( ), user.getSecret_key ( )
                     , user.getInitVector ( ) );
-            if (clientDTO.getPassword ( ).equals ( text )) {
+            if (clientDTO.getPassword ( ).equals ( text ) && user.isStatus ( )) {
                 logger.info ( "¡Login successful!" );
                 return ResponseEntity.ok ( "¡Login successful!" );
             } else {
@@ -50,7 +50,7 @@ public class LoginController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> signUp ( @RequestBody ClientDTO clientDTO ) {
-        if (userService.findByEmail ( clientDTO.getEmail ( ) ) != null) {
+        if (userService.findByEmail ( clientDTO.getEmail ( ) ) != null  ) {
             return ResponseEntity.badRequest ( ).body ( "Email already registered" );
         }
         encryptDataService.encrypt ( clientDTO );

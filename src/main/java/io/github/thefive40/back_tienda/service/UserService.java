@@ -1,8 +1,10 @@
 package io.github.thefive40.back_tienda.service;
 
 import io.github.thefive40.back_tienda.mapper.ClientMapper;
+import io.github.thefive40.back_tienda.mapper.ProductMapper;
 import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import io.github.thefive40.back_tienda.model.entity.ClientEntity;
+import io.github.thefive40.back_tienda.model.entity.ProductEntity;
 import io.github.thefive40.back_tienda.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +15,12 @@ import java.util.List;
 public class UserService {
 
     private ClientMapper mapper;
+    private ProductMapper productMapper;
 
     @Autowired
-    public void setMapper ( ClientMapper mapper ) {
+    public void setMapper ( ClientMapper mapper, ProductMapper productMapper ) {
         this.mapper = mapper;
+        this.productMapper = productMapper;
     }
 
     private UserRepository userRepository;
@@ -34,8 +38,7 @@ public class UserService {
     public ClientDTO findByEmail ( String email ) {
         ClientEntity entity = userRepository.findByEmail ( email ).orElse ( null );
         if (entity == null) return null;
-        ClientDTO client = mapper.toDto ( entity );
-        return client;
+        return mapper.toDto ( entity );
     }
 
     public List<ClientDTO> findAll () {
@@ -43,15 +46,12 @@ public class UserService {
     }
 
     public void saveUser ( ClientDTO user ) {
-        ClientEntity client = new ClientEntity ( );
-        client.setEmail ( user.getEmail ( ) );
-        client.setPassword ( user.getPassword ( ) );
-        client.setName ( user.getName ( ) );
-        client.setLastname ( user.getLastname ( ) );
-        client.setPhone ( user.getPhone ( ) );
-        client.setUrl ( user.getUrl ( ) );
-        client.setSecret_key ( user.getSecret_key ( ) );
-        client.setInitVector ( user.getInitVector ( ) );
+        ClientEntity client = mapper.toEntity ( user );
+        List<ProductEntity> productEntities = productMapper.toEntityList ( user.getProducts ( ) );
+        productEntities.forEach ( e -> {
+            e.setClient ( client );
+        } );
+        client.setProducts ( productEntities );
         userRepository.save ( client );
     }
 

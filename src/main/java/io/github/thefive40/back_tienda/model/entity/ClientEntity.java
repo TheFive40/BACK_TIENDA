@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 
 
-
 @Table(name = "Cliente")
 @Entity
 @Getter
@@ -39,14 +38,19 @@ public class ClientEntity {
     private String secret_key;
 
     private String initVector;
+
+    private String role;
+
+    private boolean status;
+
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ProductEntity> products = new ArrayList<> ();
-    @OneToMany(mappedBy="idClient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderEntity> orders = new ArrayList<> ();
+    private List<ProductEntity> products = new ArrayList<> ( );
     @OneToMany(mappedBy = "idClient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ReviewEntity> reviews = new ArrayList<> ();
+    private List<OrderEntity> orders = new ArrayList<> ( );
+    @OneToMany(mappedBy = "idClient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ReviewEntity> reviews = new ArrayList<> ( );
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShoppingCartEntity> shoppingCart = new ArrayList<> ();
+    private List<ShoppingCartEntity> shoppingCart = new ArrayList<> ( );
 
 
 }
