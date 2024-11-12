@@ -7,7 +7,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {CProductMapper.class, CShoppingCartMapper.class})
+@Mapper(componentModel = "spring", uses = {CProductMapper.class, CShoppingCartMapper.class, COrderMapper.class})
 
 public interface CClientMapper {
     CClientMapper INSTANCE = Mappers.getMapper( CClientMapper.class);

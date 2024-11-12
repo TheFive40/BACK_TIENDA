@@ -51,6 +51,14 @@ public class UserService {
         productEntities.forEach ( e -> {
             e.setClient ( client );
         } );
+        if (!user.getOrders ().isEmpty ()){
+            client.getOrders ().forEach ( e->{
+                e.getDetailOrder ().forEach ( v->{
+                    v.setOrder ( e );
+                    e.setIdClient ( client );
+                } );
+            } );
+        }
         client.setProducts ( productEntities );
         userRepository.save ( client );
     }

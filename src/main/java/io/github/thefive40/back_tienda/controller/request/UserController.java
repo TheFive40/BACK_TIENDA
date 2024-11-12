@@ -37,6 +37,7 @@ public class UserController {
         if(!clientDTO.getPassword ().equals ( user.getPassword () )){
             encryptDataService.encrypt ( clientDTO );
         }
+
         userService.saveUser ( clientDTO );
         return ResponseEntity.ok ( "User update successfully" );
     }
