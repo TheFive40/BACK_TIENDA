@@ -41,9 +41,10 @@ public class ProductController {
     public ProductDTO findProductByNameAndImgAndPrice ( @PathVariable String name, @PathVariable String img, @PathVariable double price ) {
         String image = "/static/media/images/products/" + img;
         String nombre = name.replace ( "_", " " );
-        System.out.println ( image );
-        System.out.println ( nombre );
-        System.out.println (price );
         return productService.findProductByNameAndImgAndPrice ( nombre, image, price );
+    }
+    @GetMapping("/findProductsByClientName/{name}")
+    public List<ProductDTO> findProductsByClientName(@PathVariable String name){
+        return productService.findByClientName ( name.replace ( "_"," " ) );
     }
 }

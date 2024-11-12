@@ -38,8 +38,12 @@ public class ProductService {
         productRepository.save ( productMapperImpl.toEntity ( product ) );
     }
 
+    public List<ProductDTO> findByClientName ( String name ) {
+       return productMapperImpl.toDtoList ( productRepository.findProductEntitiesByClient_Name ( name ) );
+    }
+
     public ProductDTO findProductByNameAndImgAndPrice ( String name, String img, double price ) {
-        return productMapperImpl.toDto ( productRepository.findProductByNameAndImgAndPrice (name,
+        return productMapperImpl.toDto ( productRepository.findProductByNameAndImgAndPrice ( name,
                 img, price ) );
     }
 
