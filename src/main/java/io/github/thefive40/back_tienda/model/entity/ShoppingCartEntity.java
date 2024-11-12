@@ -19,9 +19,6 @@ public class ShoppingCartEntity {
     @ManyToOne
     @JoinColumn(name = "id_cliente_fk")
     private ClientEntity client;
-    @ManyToOne
-    @JoinColumn(name = "id_product_fk")
-    private ProductEntity product;
     @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL)
     private List<ItemCartEntity> itemsCart = new ArrayList<>();
     private Date startDate;

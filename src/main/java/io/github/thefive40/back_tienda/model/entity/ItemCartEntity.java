@@ -18,4 +18,6 @@ public class ItemCartEntity {
     @ManyToOne
     @JoinColumn(name = "id_product_fk")
     private ProductEntity product;
+
+    private int quantity;
 }

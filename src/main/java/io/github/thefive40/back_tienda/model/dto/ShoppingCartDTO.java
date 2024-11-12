@@ -12,7 +12,6 @@ import java.util.List;
 public class ShoppingCartDTO {
     private long idCart;
     private ClientDTO client;
-    private ProductDTO product;
     private List<ItemCartDTO> itemsCart = new ArrayList<> ();
     private Date startDate;
 

@@ -1,7 +1,7 @@
 package io.github.thefive40.back_tienda.service;
 
-import io.github.thefive40.back_tienda.mapper.ClientMapper;
-import io.github.thefive40.back_tienda.mapper.ProductMapper;
+import io.github.thefive40.back_tienda.mapper.clients.CClientMapper;
+import io.github.thefive40.back_tienda.mapper.clients.CProductMapper;
 import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import io.github.thefive40.back_tienda.model.entity.ClientEntity;
 import io.github.thefive40.back_tienda.model.entity.ProductEntity;
@@ -14,13 +14,13 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private ClientMapper mapper;
-    private ProductMapper productMapper;
+    private CClientMapper mapper;
+    private CProductMapper CProductMapper;
 
     @Autowired
-    public void setMapper ( ClientMapper mapper, ProductMapper productMapper ) {
+    public void setMapper ( CClientMapper mapper, CProductMapper CProductMapper ) {
         this.mapper = mapper;
-        this.productMapper = productMapper;
+        this.CProductMapper = CProductMapper;
     }
 
     private UserRepository userRepository;
@@ -47,7 +47,7 @@ public class UserService {
 
     public void saveUser ( ClientDTO user ) {
         ClientEntity client = mapper.toEntity ( user );
-        List<ProductEntity> productEntities = productMapper.toEntityList ( user.getProducts ( ) );
+        List<ProductEntity> productEntities = CProductMapper.toEntityList ( user.getProducts ( ) );
         productEntities.forEach ( e -> {
             e.setClient ( client );
         } );

@@ -1,4 +1,4 @@
-package io.github.thefive40.back_tienda.mapper;
+package io.github.thefive40.back_tienda.mapper.clients;
 
 import io.github.thefive40.back_tienda.model.dto.CategoryDTO;
 import io.github.thefive40.back_tienda.model.entity.CategoryEntity;
@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProductCategoryMapper.class})
-public interface CategoryMapper {
+@Mapper(componentModel = "spring", uses = {CProductCategoryMapper.class})
+public interface CCategoryMapper {
 
     CategoryDTO toDto( CategoryEntity entity );
 

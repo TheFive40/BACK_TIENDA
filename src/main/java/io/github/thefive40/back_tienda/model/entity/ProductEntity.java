@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,8 @@ public class ProductEntity {
     private String img;
 
     private Date dateRegistration;
+
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "idClient_fk", nullable = false)

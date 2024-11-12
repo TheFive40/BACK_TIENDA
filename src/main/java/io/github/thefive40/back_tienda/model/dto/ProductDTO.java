@@ -1,5 +1,7 @@
 package io.github.thefive40.back_tienda.model.dto;
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,8 @@ public class ProductDTO {
     private Date dateRegistration;
 
     private ClientDTO client;
+
+    private boolean status;
 
     private List<ReviewDTO> reviews = new ArrayList<> ( );
 

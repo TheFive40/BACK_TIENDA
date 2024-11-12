@@ -1,13 +1,14 @@
-package io.github.thefive40.back_tienda.mapper;
-
+package io.github.thefive40.back_tienda.mapper.shop;
 import io.github.thefive40.back_tienda.model.dto.ShoppingCartDTO;
 import io.github.thefive40.back_tienda.model.entity.ShoppingCartEntity;
 import org.mapstruct.Mapper;
 
+
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProductMapper.class, ClientMapper.class, ItemCartMapper.class})
-public interface ShoppingCartMapper {
+@Mapper(componentModel = "spring", uses = {SProductMapper.class, SClientMapper.class, SItemCartMapper.class})
+public interface SShopingCartMapper {
+
 
     ShoppingCartDTO toDto( ShoppingCartEntity entity );
 

@@ -21,19 +21,31 @@ public class EncryptDataService {
 
     public void encrypt ( ClientDTO user ) {
         try {
-            KeyGenerator keyGen = KeyGenerator.getInstance ( "AES" );
-            keyGen.init ( 128 );
-            SecretKey secretKey = keyGen.generateKey ( );
-            byte[] iv = new byte[16];
-            SecureRandom random = new SecureRandom ( );
-            random.nextBytes ( iv );
-            IvParameterSpec ivSpec = new IvParameterSpec ( iv );
-            Cipher cipher = Cipher.getInstance ( "AES/CBC/PKCS5PADDING" );
-            cipher.init ( Cipher.ENCRYPT_MODE, secretKey, ivSpec );
-            byte[] encryptedPassword = cipher.doFinal ( user.getPassword ( ).getBytes ( ) );
-            user.setPassword ( Base64.getEncoder ( ).encodeToString ( encryptedPassword ) );
-            user.setSecret_key ( Base64.getEncoder ( ).encodeToString ( secretKey.getEncoded ( ) ) );
-            user.setInitVector ( Base64.getEncoder ( ).encodeToString ( iv ) );
+            if(user.getInitVector () != null && user.getSecret_key () != null){
+                byte[] decodedKey = Base64.getDecoder().decode(user.getSecret_key());
+                SecretKeySpec secretKey = new SecretKeySpec(decodedKey, "AES");
+                byte[] iv = Base64.getDecoder().decode(user.getInitVector());
+                IvParameterSpec ivSpec = new IvParameterSpec(iv);
+                Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey, ivSpec);
+                byte[] encryptedPassword = cipher.doFinal(user.getPassword().getBytes());
+                user.setPassword(Base64.getEncoder().encodeToString(encryptedPassword));
+            }else{
+                KeyGenerator keyGen = KeyGenerator.getInstance ( "AES" );
+                keyGen.init ( 128 );
+                SecretKey secretKey = keyGen.generateKey ( );
+                byte[] iv = new byte[16];
+                SecureRandom random = new SecureRandom ( );
+                random.nextBytes ( iv );
+                IvParameterSpec ivSpec = new IvParameterSpec ( iv );
+                Cipher cipher = Cipher.getInstance ( "AES/CBC/PKCS5PADDING" );
+                cipher.init ( Cipher.ENCRYPT_MODE, secretKey, ivSpec );
+                byte[] encryptedPassword = cipher.doFinal ( user.getPassword ( ).getBytes ( ) );
+                user.setPassword ( Base64.getEncoder ( ).encodeToString ( encryptedPassword ) );
+                user.setSecret_key ( Base64.getEncoder ( ).encodeToString ( secretKey.getEncoded ( ) ) );
+                user.setInitVector ( Base64.getEncoder ( ).encodeToString ( iv ) );
+            }
+
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | IllegalBlockSizeException |
                  BadPaddingException | InvalidAlgorithmParameterException e) {
             throw new RuntimeException ( e );

@@ -33,7 +33,10 @@ public class UserController {
 
     @PostMapping("/update")
     public ResponseEntity<String> update ( @RequestBody ClientDTO clientDTO ) throws Exception {
-        //encryptDataService.encrypt ( clientDTO );
+        ClientDTO user = userService.findByEmail ( clientDTO.getEmail ( ) );
+        if(!clientDTO.getPassword ().equals ( user.getPassword () )){
+            encryptDataService.encrypt ( clientDTO );
+        }
         userService.saveUser ( clientDTO );
         return ResponseEntity.ok ( "User update successfully" );
     }
