@@ -14,15 +14,16 @@ public interface CProductMapper {
     @Mappings (
             {
                     @Mapping ( target = "client", ignore = true),
-                    @Mapping(target = "itemsCart", ignore = true)
+                    @Mapping(target = "itemsCart", ignore = true),
+                    @Mapping(target = "detailsOrder", ignore = true)
             }
     )
     ProductDTO toDto( ProductEntity entity);
     @Mappings (
             {
                     @Mapping ( target = "client", ignore = true),
-                    @Mapping(target = "itemsCart", ignore = true)
-
+                    @Mapping(target = "itemsCart", ignore = true),
+                    @Mapping(target = "detailsOrder", ignore = true)
             }
     )
     ProductEntity toEntity( ProductDTO dto);
