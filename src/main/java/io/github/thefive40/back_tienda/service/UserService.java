@@ -69,4 +69,12 @@ public class UserService {
         clientDTO.setPassword ( userEntity.getPassword ( ) );
         return clientDTO;
     }
+    public List<ClientDTO> findByName(String name){
+       List<ClientEntity> entities = userRepository.findAllByName ( name );
+       return mapper.toDtoList ( entities );
+    }
+    public List<ClientDTO> findByLastName(String lastname){
+        List<ClientEntity> entities = userRepository.findAllByLastname ( lastname );
+        return mapper.toDtoList ( entities );
+    }
 }

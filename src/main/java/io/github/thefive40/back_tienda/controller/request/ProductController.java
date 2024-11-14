@@ -43,8 +43,14 @@ public class ProductController {
         String nombre = name.replace ( "_", " " );
         return productService.findProductByNameAndImgAndPrice ( nombre, image, price );
     }
+
     @GetMapping("/findProductsByClientName/{name}")
-    public List<ProductDTO> findProductsByClientName(@PathVariable String name){
-        return productService.findByClientName ( name.replace ( "_"," " ) );
+    public List<ProductDTO> findProductsByClientName ( @PathVariable String name ) {
+        return productService.findByClientName ( name.replace ( "_", " " ) );
+    }
+
+    @GetMapping("/findProductName/{name}")
+    public List<ProductDTO> findByName ( @PathVariable String name ) {
+        return productService.findByName ( name.replace ( "_"," " ) );
     }
 }

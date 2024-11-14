@@ -48,7 +48,9 @@ public class ShoppingCartService {
 
     public ShoppingCartDTO findByClient ( ClientDTO clientDTO ) {
         System.out.println ( clientDTO.getEmail ( ) );
-        return mapper.toDto ( repository.findByClient_Email ( clientDTO.getEmail ( ) ) );
+        var x = mapper.toDto ( repository.findByClient_Email ( clientDTO.getEmail ( ) ) );
+        System.out.println ( x.getIdCart ( ) );
+        return x;
     }
 
     public ItemCartDTO findByProductAndShoppingCart ( ProductDTO productDTO, ShoppingCartDTO shoppingCart ) {
@@ -61,5 +63,8 @@ public class ShoppingCartService {
         var entity = itemsCartMapper.toEntity ( itemCartDTO );
 
         itemsCartRepository.save ( entity );
+    }
+    public void delete(ItemCartDTO itemCartDTO){
+        itemsCartRepository.deleteById ( itemCartDTO.getIdCart () );
     }
 }

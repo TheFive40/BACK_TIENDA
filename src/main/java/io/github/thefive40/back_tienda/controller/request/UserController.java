@@ -46,4 +46,13 @@ public class UserController {
     public ClientDTO getPasswordByEmail ( @PathVariable String email ) {
         return userService.findPasswordByEmail ( email );
     }
+    @GetMapping("/findByName/{name}")
+    public List<ClientDTO> clientsByName(@PathVariable String name){
+        return userService.findByName ( name.replace ( "_"," " ) );
+    }
+    @GetMapping("/findByLastName/{lastName}")
+    public List<ClientDTO> clientsByLastName(@PathVariable String lastName){
+        System.out.println (lastName );
+        return userService.findByLastName ( lastName.replace ( "_"," " ) );
+    }
 }

@@ -36,4 +36,9 @@ public class CartController {
         var x = service.findByProductAndShoppingCart ( request.getProduct (), request.getShoppingCart () );
         return x;
     }
+    @PostMapping("/remove")
+    public void removeItemCart(@RequestBody ItemCartDTO itemCartDTO){
+        System.out.println (itemCartDTO.getIdCart () );
+        service.delete ( itemCartDTO );
+    }
 }

@@ -47,4 +47,7 @@ public class ProductService {
                 img, price ) );
     }
 
+    public List<ProductDTO> findByName(String name){
+        return productMapperImpl.toDtoList ( productRepository.findAllByName ( name ) );
+    }
 }

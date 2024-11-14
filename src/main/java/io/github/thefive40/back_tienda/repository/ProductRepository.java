@@ -17,4 +17,6 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     ProductEntity findProductByNameAndImgAndPrice ( String name, String img, double price );
 
     List<ProductEntity> findProductEntitiesByClient_Name ( String name );
+
+    List<ProductEntity> findAllByName( String name );
 }
