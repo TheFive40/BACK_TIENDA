@@ -26,6 +26,7 @@ public class OrderEntity {
     private String country;
     private String paymentMethod;
     private String discountCode;
+    private boolean status;
     @ManyToOne(targetEntity = ClientEntity.class)
     @JoinColumn(name = "idClient_fk")
     private ClientEntity idClient;

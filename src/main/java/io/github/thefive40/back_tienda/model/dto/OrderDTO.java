@@ -18,6 +18,7 @@ public class OrderDTO {
     private String city;
     private String zipCode;
     private String country;
+    private boolean status = true;
     private String paymentMethod;
     private String discountCode;
     private ClientDTO idClient;
