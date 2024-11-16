@@ -46,8 +46,7 @@ public class ShoppingCartService {
         repository.saveAndFlush ( entity );
     }
 
-    public ShoppingCartDTO findByClient ( ClientDTO clientDTO ) {
-        System.out.println ( clientDTO.getEmail ( ) );
+    public ShoppingCartDTO findByClient (  ClientDTO clientDTO ) {
         var x = mapper.toDto ( repository.findByClient_Email ( clientDTO.getEmail ( ) ) );
         System.out.println ( x.getIdCart ( ) );
         return x;

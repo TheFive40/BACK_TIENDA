@@ -60,11 +60,13 @@ public class UserService {
                 } );
             } );
         }
-        var shopping = client.getShoppingCart ( ).get ( 0 );
-        for (ItemCartEntity e : shopping.getItemsCart ( )) {
-            e.setShoppingCart ( shopping );
+        if (!client.getShoppingCart ().isEmpty ()){
+            var shopping = client.getShoppingCart ( ).get ( 0 );
+            for (ItemCartEntity e : shopping.getItemsCart ( )) {
+                e.setShoppingCart ( shopping );
+            }
+            shopping.setClient ( client );
         }
-        shopping.setClient ( client );
         client.setProducts ( productEntities );
         userRepository.save ( client );
     }
