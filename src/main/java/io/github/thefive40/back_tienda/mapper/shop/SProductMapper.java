@@ -8,7 +8,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import java.util.List;
-@Mapper(componentModel = "spring", uses = { SClientMapper.class, CReviewMapper.class, CProductCategoryMapper.class, CDetailOrderMapper.class, SItemCartMapper.class })
+@Mapper(componentModel = "spring", uses = { SClientMapper.class, CReviewMapper.class, CProductCategoryMapper.class, CDetailOrderMapper.class, SItemCartMapper.class ,
+SDetailInvoicesMapper.class})
 
 public interface SProductMapper {
     @Mappings(

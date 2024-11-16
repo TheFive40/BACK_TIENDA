@@ -51,6 +51,7 @@ public class ClientEntity {
     private List<ReviewEntity> reviews = new ArrayList<> ( );
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ShoppingCartEntity> shoppingCart = new ArrayList<> ( );
-
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<InvoiceEntity> invoices = new ArrayList<> (  );
 
 }

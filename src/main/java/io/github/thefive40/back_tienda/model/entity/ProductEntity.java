@@ -44,4 +44,6 @@ public class ProductEntity {
     private List<DetailOrderEntity> detailsOrder = new ArrayList<> ( );
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCartEntity> itemsCart = new ArrayList<>();
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetailInvoiceEntity> invoices = new ArrayList<> (  );
 }

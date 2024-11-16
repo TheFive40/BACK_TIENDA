@@ -8,14 +8,16 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = { CClientMapper.class, CReviewMapper.class, CProductCategoryMapper.class, CDetailOrderMapper.class, CItemCartMapper.class })
+@Mapper(componentModel = "spring", uses = { CClientMapper.class, CReviewMapper.class, CProductCategoryMapper.class, CDetailOrderMapper.class, CItemCartMapper.class,
+CDetailInvoicesMapper.class})
 public interface CProductMapper {
 
     @Mappings (
             {
                     @Mapping ( target = "client", ignore = true),
                     @Mapping(target = "itemsCart", ignore = true),
-                    @Mapping(target = "detailsOrder", ignore = true)
+                    @Mapping(target = "detailsOrder", ignore = true),
+                    @Mapping ( target = "invoices", ignore = true )
             }
     )
     ProductDTO toDto( ProductEntity entity);
@@ -23,7 +25,8 @@ public interface CProductMapper {
             {
                     @Mapping ( target = "client", ignore = true),
                     @Mapping(target = "itemsCart", ignore = true),
-                    @Mapping(target = "detailsOrder", ignore = true)
+                    @Mapping(target = "detailsOrder", ignore = true),
+                    @Mapping ( target = "invoices", ignore = true )
             }
     )
     ProductEntity toEntity( ProductDTO dto);

@@ -32,8 +32,7 @@ public class OrderEntity {
     private ClientEntity idClient;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetailOrderEntity> detailOrder = new ArrayList<> (  );
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<InvoiceEntity> invoices = new ArrayList<> (  );
+
     public OrderEntity ( String country, String city, String address, String zipCode, String paymentMethod, String discountCode, double total ) {
         this.country = country;
         this.city = city;

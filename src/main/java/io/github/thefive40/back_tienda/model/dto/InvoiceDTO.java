@@ -1,7 +1,11 @@
 package io.github.thefive40.back_tienda.model.dto;
+import io.github.thefive40.back_tienda.model.entity.ClientEntity;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -10,8 +14,6 @@ public class InvoiceDTO {
     private long idInvoice;
 
     private int nroInvoice;
-
-    private OrderDTO order;
 
     private Date startDate;
 
@@ -22,4 +24,9 @@ public class InvoiceDTO {
     private double discount;
 
     private double total;
+
+    private ClientEntity client;
+
+    private List<DetailInvoiceDTO> detailsInvoice = new ArrayList<> (  );
+
 }

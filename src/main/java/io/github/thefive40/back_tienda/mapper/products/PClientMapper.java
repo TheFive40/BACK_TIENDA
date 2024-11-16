@@ -1,4 +1,5 @@
 package io.github.thefive40.back_tienda.mapper.products;
+import io.github.thefive40.back_tienda.mapper.clients.CInvoicesMapper;
 import io.github.thefive40.back_tienda.mapper.clients.COrderMapper;
 import io.github.thefive40.back_tienda.mapper.clients.CShoppingCartMapper;
 import io.github.thefive40.back_tienda.model.dto.ClientDTO;
@@ -8,7 +9,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 import java.util.List;
-@Mapper(componentModel = "spring", uses = {PProductMapper.class, CShoppingCartMapper.class,  COrderMapper.class})
+@Mapper(componentModel = "spring", uses = {PProductMapper.class, CShoppingCartMapper.class,  COrderMapper.class,
+        PInvoicesMapper.class})
 public interface PClientMapper {
     @Mappings({
             @Mapping(target = "products", ignore = true),

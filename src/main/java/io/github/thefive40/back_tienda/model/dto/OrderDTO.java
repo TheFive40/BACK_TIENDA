@@ -23,7 +23,6 @@ public class OrderDTO {
     private String discountCode;
     private ClientDTO idClient;
     private List<DetailOrderDTO> detailOrder = new ArrayList<> ( );
-    private List<InvoiceEntity> invoices = new ArrayList<> (  );
 
     @Override
     public boolean equals ( Object object ) {

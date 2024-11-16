@@ -44,6 +44,8 @@ public class ClientDTO  implements Cloneable, Serializable{
 
     private List<ShoppingCartDTO> shoppingCart = new ArrayList<> ();
 
+    private List<InvoiceDTO> invoices = new ArrayList<> (  );
+
     @Override
     public ClientDTO clone () {
         try {

@@ -67,6 +67,12 @@ public class UserService {
             }
             shopping.setClient ( client );
         }
+        client.getInvoices ().forEach ( e->{
+            e.setClient ( client );
+            e.getDetailsInvoice ().forEach ( details->{
+                details.setInvoice ( e );
+            } );
+        } );
         client.setProducts ( productEntities );
         userRepository.save ( client );
     }

@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Factura")
@@ -17,9 +19,10 @@ public class InvoiceEntity {
 
     private int nroInvoice;
     @ManyToOne
-    @JoinColumn(name = "idPedido_fk")
-    private OrderEntity order;
-
+    @JoinColumn(name = "id_client_fk")
+    private ClientEntity client;
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetailInvoiceEntity> detailsInvoice = new ArrayList<> (  );
     private Date startDate;
 
     private double subTotal;
