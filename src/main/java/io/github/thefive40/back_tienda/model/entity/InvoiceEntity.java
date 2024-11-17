@@ -32,4 +32,6 @@ public class InvoiceEntity {
     private double discount;
 
     private double total;
+
+    private boolean status;
 }

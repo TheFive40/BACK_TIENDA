@@ -54,7 +54,9 @@ public class LoginController {
             return ResponseEntity.badRequest ( ).body ( "Email already registered" );
         }
         encryptDataService.encrypt ( clientDTO );
+
         userService.saveUser ( clientDTO );
+
         return ResponseEntity.ok ( "User created successfully" );
     }
 }

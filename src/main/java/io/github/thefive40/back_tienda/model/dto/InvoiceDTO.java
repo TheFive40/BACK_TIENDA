@@ -25,6 +25,8 @@ public class InvoiceDTO {
 
     private double total;
 
+    private boolean status;
+
     private ClientEntity client;
 
     private List<DetailInvoiceDTO> detailsInvoice = new ArrayList<> (  );

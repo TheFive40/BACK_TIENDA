@@ -3,6 +3,8 @@ package io.github.thefive40.back_tienda.controller.request;
 import io.github.thefive40.back_tienda.model.dto.ClientDTO;
 import io.github.thefive40.back_tienda.service.EncryptDataService;
 import io.github.thefive40.back_tienda.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+    private Logger logger = LoggerFactory.getLogger ( UserController.class );
     private UserService userService;
     private EncryptDataService encryptDataService;
 
