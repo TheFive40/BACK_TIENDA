@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Duration;
+import java.time.Instant;
+
 @RestController
 @RequestMapping("/auth")
 public class LoginController {
@@ -54,9 +57,10 @@ public class LoginController {
             return ResponseEntity.badRequest ( ).body ( "Email already registered" );
         }
         encryptDataService.encrypt ( clientDTO );
-
+        var start = Instant.now ( );
         userService.saveUser ( clientDTO );
-
+        var end = Instant.now ( );
+        logger.info ( "Tiempo de ejecución de la operación insert:" + Duration.between ( start, end ).toMillis ( ) + " ms " );
         return ResponseEntity.ok ( "User created successfully" );
     }
 }

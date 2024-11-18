@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 
 @RestController
@@ -24,23 +26,28 @@ public class UserController {
 
     @GetMapping("/all")
     public List<ClientDTO> findAll () {
-        return userService.findAll ( );
+        var start = Instant.now ( );
+        var user = userService.findAll ( );
+        var end = Instant.now ( );
+        logger.info ( "Tiempo de ejecución de la operación select:" + Duration.between ( start, end ).toMillis ( ) + " ms " );
+        return user;
     }
 
     @GetMapping("/email/{email}")
     public ClientDTO getUserByEmail ( @PathVariable String email ) {
-        // Retrieve user from database and map it to UserDTO
-        // Return the UserDTO
-        return userService.findByEmail ( email );
+        var start = Instant.now ( );
+        var user =  userService.findByEmail ( email );
+        var end = Instant.now ( );
+        logger.info ( "Tiempo de ejecución de la operación select:" + Duration.between ( start, end ).toMillis ( ) + " ms " );
+        return user;
     }
 
     @PostMapping("/update")
     public ResponseEntity<String> update ( @RequestBody ClientDTO clientDTO ) throws Exception {
         ClientDTO user = userService.findByEmail ( clientDTO.getEmail ( ) );
-        if(!clientDTO.getPassword ().equals ( user.getPassword () )){
+        if (!clientDTO.getPassword ( ).equals ( user.getPassword ( ) )) {
             encryptDataService.encrypt ( clientDTO );
         }
-
         userService.saveUser ( clientDTO );
         return ResponseEntity.ok ( "User update successfully" );
     }
@@ -49,13 +56,18 @@ public class UserController {
     public ClientDTO getPasswordByEmail ( @PathVariable String email ) {
         return userService.findPasswordByEmail ( email );
     }
+
     @GetMapping("/findByName/{name}")
-    public List<ClientDTO> clientsByName(@PathVariable String name){
-        return userService.findByName ( name.replace ( "_"," " ) );
+    public List<ClientDTO> clientsByName ( @PathVariable String name ) {
+        var start = Instant.now ( );
+        var user =  userService.findByName ( name.replace ( "_", " " ) );
+        var end = Instant.now ( );
+        logger.info ( "Tiempo de ejecución de la operación select:" + Duration.between ( start, end ).toMillis ( ) + " ms " );
+        return user;
     }
+
     @GetMapping("/findByLastName/{lastName}")
-    public List<ClientDTO> clientsByLastName(@PathVariable String lastName){
-        System.out.println (lastName );
-        return userService.findByLastName ( lastName.replace ( "_"," " ) );
+    public List<ClientDTO> clientsByLastName ( @PathVariable String lastName ) {
+        return userService.findByLastName ( lastName.replace ( "_", " " ) );
     }
 }

@@ -46,6 +46,10 @@ public class UserService {
         return mapper.toDtoList ( userRepository.findAll ( ) );
     }
 
+    public void saveAll(){
+        userRepository.findAll ().subList ( 0,5 );
+    }
+
     public void saveUser ( ClientDTO user ) {
         ClientEntity client = mapper.toEntity ( user );
         List<ProductEntity> productEntities = CProductMapper.toEntityList ( user.getProducts ( ) );
