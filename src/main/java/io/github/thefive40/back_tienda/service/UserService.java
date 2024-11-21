@@ -41,7 +41,9 @@ public class UserService {
         if (entity == null) return null;
         return mapper.toDto ( entity );
     }
-
+    public ClientDTO findById(Long id){
+        return mapper.toDto(userRepository.findById ( id ).orElseThrow ());
+    }
     public List<ClientDTO> findAll () {
         return mapper.toDtoList ( userRepository.findAll ( ) );
     }

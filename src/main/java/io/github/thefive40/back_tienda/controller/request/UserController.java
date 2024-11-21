@@ -45,6 +45,9 @@ public class UserController {
     @PostMapping("/update")
     public ResponseEntity<String> update ( @RequestBody ClientDTO clientDTO ) throws Exception {
         ClientDTO user = userService.findByEmail ( clientDTO.getEmail ( ) );
+        if (user == null) {
+            user = userService.findById ( clientDTO.getIdClient () );
+        }
         if (!clientDTO.getPassword ( ).equals ( user.getPassword ( ) )) {
             encryptDataService.encrypt ( clientDTO );
         }

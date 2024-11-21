@@ -34,4 +34,8 @@ public class InvoiceEntity {
     private double total;
 
     private boolean status;
+
+    public InvoiceEntity(){
+        this.nroInvoice = (int)idInvoice;
+    }
 }

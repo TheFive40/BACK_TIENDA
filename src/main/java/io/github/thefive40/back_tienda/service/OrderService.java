@@ -17,4 +17,7 @@ public class OrderService {
     public List<OrderDTO> findByCity( String city){
         return orderMapper.toDtoList ( repository.findAllByCity ( city ) );
     }
+    public List<OrderDTO> findByOrder( String city){
+        return orderMapper.toDtoList ( repository.findAllByCity ( city ) );
+    }
 }
