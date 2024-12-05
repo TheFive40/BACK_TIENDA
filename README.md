@@ -151,13 +151,15 @@ La documentación generada automáticamente con **Javadoc** detalla las clases, 
 
 ## 🛡️ License | Licencia 🛡️
 
-This project is licensed under the **MIT License**.  
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)** with additional terms for recognition of intellectual property and restrictions on commercial use.  
 See the [LICENSE](LICENSE) file for more details.
 
-Este proyecto está bajo la **Licencia MIT**.  
+Este proyecto está bajo la **Licencia Pública General Affero de GNU v3.0 (AGPL-3.0)** con términos adicionales para el reconocimiento de la propiedad intelectual y restricciones sobre el uso comercial.  
 Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
+
+
 
 ## 🤝 Contributing | Contribuciones 🤝
 
