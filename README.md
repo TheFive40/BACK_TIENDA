@@ -177,6 +177,9 @@ Consulta el archivo [LICENSE](LICENSE) para más detalles.
 - **Angel de Jesús Quintero Rivera** (Database Designer | Diseñador de la Base de Datos)  
 📧 **Email**: [angelquinteror@gmail.com](mailto:angelquintero@gmail.com)  
 
+- **Andres Felipe Yepes**
+
+
 Feel free to reach out with any questions or feedback.  
 No dudes en contactarnos para cualquier consulta o retroalimentación.
 
